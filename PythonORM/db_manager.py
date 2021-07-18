@@ -5,6 +5,7 @@ from sqlalchemy.orm import sessionmaker, relationship
 
 Base = declarative_base()
 
+
 class Person(Base):
     __tablename__ = 'person'
 
@@ -22,7 +23,7 @@ session = Session()
 
 user = Person()
 user.id = 1
-user.name ='Rajesh'
+user.name = 'Rajesh'
 
 session.add(user)
 session.commit()
