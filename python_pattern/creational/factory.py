@@ -49,10 +49,10 @@ class Worker(Product):
         self.hours = hours
 
     def calculate_risk(self):
-        return self.age + 100/self.hours
+        return self.age + 100 / self.hours
 
     def __repr__(self):
-        return self.name+" ["+str(self.age)+"] - "+str(self.hours)+"h/week"
+        return self.name + " [" + str(self.age) + "] - " + str(self.hours) + "h/week"
 
 
 class Unemployed(Product):
@@ -75,17 +75,18 @@ class Unemployed(Product):
 
 
 class PersonFactory:
-    def get_person(self, type_of_person):
-        if type_of_person == 'worker':
-            return Worker("Ajay",22, 40)
-        elif type_of_person == 'unemployed':
+    @staticmethod
+    def get_person(type_of_person):
+        if type_of_person == "worker":
+            return Worker("Ajay", 22, 40)
+        elif type_of_person == "unemployed":
             return Unemployed("Ajay", 22, False)
 
 
 if __name__ == "__main__":
     factory = PersonFactory()
-    product1 = factory.get_person('worker')
+    product1 = factory.get_person("worker")
     print(product1)
 
-    product2 = factory.get_person('unemployed')
+    product2 = factory.get_person("unemployed")
     print(product2)

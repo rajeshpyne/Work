@@ -30,6 +30,7 @@ class AbstractHandler(Handler):
     """
     The default chaining behavior can be implemented inside a base handler class.
     """
+
     _next_handler: Handler = None
 
     def set_next(self, handler: Handler) -> Handler:
@@ -53,7 +54,7 @@ All concrete Handlers either handle a request or pass it to the next handler in 
 
 class MonkeyHandler(AbstractHandler):
     def handle(self, request: Any) -> str:
-        if request == 'Banana':
+        if request == "Banana":
             return "Monkey: I'll eat the {request}"
         else:
             return super().handle(request)
@@ -81,15 +82,15 @@ def client_code(handler: Handler) -> None:
     In most cases, it is not even aware that the handler is part of the chain.
     """
 
-    for food in ["Nut","Banana","MeatBall"]:
+    for food in ["Nut", "Banana", "MeatBall"]:
         result = handler.handle(food)
         if result:
-            print(f"{result}",end="")
+            print(f"{result}", end="")
         else:
             print(f"{food} is left untouched", end="")
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     monkey = MonkeyHandler()
     dog = DogHandler()
     squirrel = SquirrelHandler()
